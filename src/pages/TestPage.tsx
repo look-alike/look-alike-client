@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { uploadImage } from '../components/api/uploadImage';
 import { Footer } from '../components/common/Footer';
 import { Header } from '../components/common/Header';
 import { ImageIcon } from '../components/icons/ImageIcon';
 import { ImageUploadArea } from '../components/testPage/ImageUploadArea';
 
 export function Test() {
+  const [imageFile, setImageFile] = useState<any>();
   const [imgUrl, setImageUrl] = useState<any>('');
   const [imageHeight, setImageHeight] = useState(0);
   const [isImageUploaded, setIsImageUploaded] = useState(false);
@@ -23,16 +25,20 @@ export function Test() {
     fileReader.onload = () => {
       let img = new Image();
       img.onload = () => {
-        console.log((img.height / img.width) * 200);
+        // console.log((img.height / img.width) * 200);
         setImageHeight((img.height / img.width) * 200);
       };
       if (typeof fileReader.result === 'string') {
         img.src = fileReader.result;
       }
-      console.log(fileReader.result);
+      // console.log(fileReader.result);
       setImageUrl(fileReader.result?.toString());
     };
     fileReader.readAsDataURL(file as Blob);
+  };
+
+  const onClickResultButton = () => {
+    uploadImage(imageFile);
   };
 
   return (
@@ -52,7 +58,10 @@ export function Test() {
                   style={{ display: 'none' }}
                   onChange={(e) => {
                     console.log(e.target.files);
-                    if (e.target.files) return encodeFileToBase64(e.target.files);
+                    if (e.target.files) {
+                      setImageFile(e.target.files[0]);
+                      return encodeFileToBase64(e.target.files);
+                    }
                   }}
                   accept="image/x-png,image/gif,image/jpeg"
                 />
@@ -63,7 +72,9 @@ export function Test() {
               </div>
             )}
           </div>
-          <ResultButton isImageUploaded={isImageUploaded}>결과 보기</ResultButton>
+          <ResultButton onClick={onClickResultButton} isImageUploaded={isImageUploaded}>
+            결과 보기
+          </ResultButton>
         </Wrapper>
       </Container>
       <Footer />
