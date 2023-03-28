@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { Logo } from '../icons/Logo';
 
 export function Header() {
   const navigate = useNavigate();
@@ -7,13 +8,7 @@ export function Header() {
   return (
     <Container>
       <Wrapper>
-        <button
-          onClick={() => {
-            navigate('/');
-          }}
-        >
-          🎓
-        </button>
+        <Logo />
       </Wrapper>
     </Container>
   );
@@ -21,8 +16,8 @@ export function Header() {
 
 const Container = styled.div`
   width: 100%;
-  height: 64px;
-  background-color: rgba(228, 228, 228, 1);
+  height: 100px;
+  /* background-color: rgba(228, 228, 228, 1); */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,10 +28,10 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 40%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding-left: 240px;
+  justify-content: center;
+  padding-right: 380px;
 
   button {
     font-size: 48px;

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import './font.css';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -8,11 +9,9 @@ const GlobalStyle = createGlobalStyle`
   } 
 
   body {
-    font-family: Pretendard, 'Apple SD Gothic Neo', Roboto,'Helvetica Neue', 'Segoe UI', 'Noto Sans KR', 'Malgun Gothic',
+    font-family: 'DX', Pretendard, 'Apple SD Gothic Neo', Roboto,'Helvetica Neue', 'Segoe UI', 'Noto Sans KR', 'Malgun Gothic',
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', -apple-system,
       BlinkMacSystemFont, system-ui, sans-serif, Gotham;
-    background-color: rgba(228, 228, 228, 1);
-   
     box-sizing: border-box;
     margin: 0;
     overflow-x: hidden;
@@ -28,6 +27,27 @@ const GlobalStyle = createGlobalStyle`
   }
 
   }
+
+  /* body { */
+  /* background-image: url('your-background-image.jpg'); */
+  /* height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  z-index: 1;
+} */
+
   
   #root {
     margin: 0 auto;

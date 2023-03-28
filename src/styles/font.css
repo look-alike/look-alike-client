@@ -1,8 +1,8 @@
 @font-face {
-  font-family: 'Gotham';
-  src: url('gothambold.woff') format('opentype');
+  font-family: 'DX';
+  src: url('./fonts/DXHmchL-KSCpc-EUC-H.ttf');
   font-weight: normal;
   font-style: normal;
 }
 
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css');
+/* @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css'); */

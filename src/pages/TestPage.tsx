@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { uploadImage } from '../components/api/uploadImage';
 import { Footer } from '../components/common/Footer';
 import { Header } from '../components/common/Header';
+import { Container, Wrapper } from '../components/common/Wrapper';
 import { ImageIcon } from '../components/icons/ImageIcon';
 import { ImageUploadArea } from '../components/testPage/ImageUploadArea';
 
@@ -38,73 +39,55 @@ export function Test() {
   };
 
   const onClickResultButton = () => {
+    console.log(imageFile);
+
     uploadImage(imageFile);
   };
 
   return (
-    <div style={{ position: 'relative' }}>
-      <Container>
-        <Header />
-        <Wrapper>
-          <Title>우리 테스트에 온 걸 환영해 연진아...</Title>
-          <div style={{ marginTop: '28px' }}>
-            {imgUrl.length > 1 ? (
-              <img src={imgUrl} />
-            ) : (
-              <div>
-                <input
-                  type="file"
-                  id="img-upload"
-                  style={{ display: 'none' }}
-                  onChange={(e) => {
-                    console.log(e.target.files);
-                    if (e.target.files) {
-                      setImageFile(e.target.files[0]);
-                      return encodeFileToBase64(e.target.files);
-                    }
-                  }}
-                  accept="image/x-png,image/gif,image/jpeg"
-                />
-                <Circle htmlFor="img-upload" style={{ cursor: 'pointer' }}>
-                  <ImageIcon />
-                  <div>여기를 클릭해 연진아...</div>
-                </Circle>
-              </div>
-            )}
-          </div>
-          <ResultButton onClick={onClickResultButton} isImageUploaded={isImageUploaded}>
-            결과 보기
-          </ResultButton>
-        </Wrapper>
-      </Container>
-      <Footer />
-    </div>
+    <Container>
+      <Header />
+      <Wrapper>
+        <Title>우리 테스트에 온 걸 환영해 연진아...</Title>
+        <div style={{ marginTop: '28px' }}>
+          {imgUrl.length > 1 ? (
+            <CircleImage src={imgUrl} />
+          ) : (
+            <div>
+              <input
+                type="file"
+                id="img-upload"
+                style={{ display: 'none' }}
+                onChange={(e) => {
+                  console.log(e.target.files);
+                  if (e.target.files) {
+                    setImageFile(e.target.files[0]);
+                    return encodeFileToBase64(e.target.files);
+                  }
+                }}
+                accept="image/x-png,image/gif,image/jpeg"
+              />
+              <Circle htmlFor="img-upload" style={{ cursor: 'pointer' }}>
+                <ImageIcon />
+                <div>여기를 클릭해 연진아...</div>
+              </Circle>
+            </div>
+          )}
+        </div>
+        <ResultButton onClick={onClickResultButton} isImageUploaded={isImageUploaded}>
+          결과 보기
+        </ResultButton>
+      </Wrapper>
+    </Container>
   );
 }
 
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 476px;
-  /* background-color: red; */
-  padding-top: calc(64px + 88px);
-  gap: 32px;
-`;
-
 const Title = styled.span`
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 600;
+  font-size: 36px;
   line-height: 31px;
+  color: white;
+  margin-top: 12px;
 `;
 
 const ResultButton = styled.button<{ isImageUploaded: any }>`
@@ -133,4 +116,10 @@ const Circle = styled.label`
   font-weight: 500;
   font-size: 18px;
   line-height: 23px;
+`;
+
+const CircleImage = styled.img`
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
 `;

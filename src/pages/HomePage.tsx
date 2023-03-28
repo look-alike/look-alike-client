@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { Footer } from '../components/common/Footer';
 import { Header } from '../components/common/Header';
+import { Container, Wrapper } from '../components/common/Wrapper';
 import { InformationArea } from '../components/homePage/InformationArea';
 
 export function Home() {
@@ -11,8 +11,8 @@ export function Home() {
       <Container>
         <Header />
         <Wrapper>
-          <Title>룩어라이크</Title>
-          <img src="/Logo.png" />
+          <Title>졸업반 01s</Title>
+          <img src="/Logo.png" alt="로고" />
           <InformationArea />
           <TestButton
             onClick={() => {
@@ -23,44 +23,26 @@ export function Home() {
           </TestButton>
         </Wrapper>
       </Container>
-      <Footer />
     </div>
   );
 }
 
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* padding-bottom: 52px; */
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 476px;
-  /* background-color: red; */
-  padding-top: calc(64px + 88px);
-  gap: 32px;
-`;
-
 const Title = styled.span`
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 600;
+  font-size: 36px;
   line-height: 31px;
+  color: white;
+  margin-top: 12px;
 `;
 
 const TestButton = styled.button`
   width: 100%;
   height: 55px;
-  background-color: #0085ff;
+  background-color: #e50914;
   border-radius: 16px;
   color: white;
   font-weight: 700;
   font-size: 18px;
   line-height: 23px;
+  margin-top: 60px;
 `;
