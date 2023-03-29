@@ -13,7 +13,7 @@ export function Header() {
 }
 
 const Container = styled.div`
-  width: 100%;
+  width: 768px;
   height: 100px;
   /* background-color: rgba(228, 228, 228, 1); */
   display: flex;
@@ -23,5 +23,10 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   z-index: 1;
+
+  @media (max-width: 767px) {
+    width: 100vw;
+    overflow-x: hidden;
+   }
 `;
 

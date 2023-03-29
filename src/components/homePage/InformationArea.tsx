@@ -11,7 +11,7 @@ export function InformationArea() {
 
 const Text = styled.div`
   /* padding: 24px;
-  width: 100%;
+  width: 100%;å
   background-color: #ffffff;
   border-radius: 16px; */
   width: 100%;
@@ -22,4 +22,5 @@ const Text = styled.div`
   color: white;
   /* font-size: 24px; */
   line-height: 34px;
+  font-size: 140%;
 `;

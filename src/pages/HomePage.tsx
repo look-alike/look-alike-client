@@ -8,10 +8,10 @@ export function Home() {
   const navigate = useNavigate();
   return (
     <Container>
-      <Header />
+     <Header />
       <Wrapper>
         <Title>졸업반 01s</Title>
-        <img src="/Logo.png" alt="로고" width={'100%'}/>
+        <img src="/Logo.png" alt="로고" width={'80%'}/>
         <InformationArea />
         <TestButton
           onClick={() => {
@@ -31,10 +31,12 @@ const Title = styled.span`
   line-height: 31px;
   color: white;
   margin-top: 12px;
+
+ 
 `;
 
 const TestButton = styled.button`
-  width: 90%;
+  width: 70%;
   height: 55px;
   background-color: #e50914;
   border-radius: 16px;
@@ -42,5 +44,5 @@ const TestButton = styled.button`
   font-weight: 700;
   font-size: 18px;
   line-height: 23px;
-  margin-top: 60px;
+  margin: 24px 0px 24px 0px;
 `;

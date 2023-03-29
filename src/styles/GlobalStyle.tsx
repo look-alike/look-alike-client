@@ -15,10 +15,15 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     overflow-x: hidden;
-    /* display: flex; */
+    display: flex;
     justify-content: center;
     align-items: center;
-   
+    background-color:#141414;
+
+   @media (max-width: 767px) {
+    width: 100%;
+    padding: 0 10px;
+   }
 
    &::-webkit-scrollbar {
     width: 8px;
