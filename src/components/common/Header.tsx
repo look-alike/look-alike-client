@@ -7,9 +7,7 @@ export function Header() {
 
   return (
     <Container>
-      <Wrapper>
         <Logo />
-      </Wrapper>
     </Container>
   );
 }
@@ -21,19 +19,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
+  align-items: flex-start;
   position: fixed;
   top: 0;
   z-index: 1;
 `;
 
-const Wrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-right: 380px;
-
-  button {
-    font-size: 48px;
-  }
-`;

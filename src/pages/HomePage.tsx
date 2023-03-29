@@ -11,7 +11,7 @@ export function Home() {
       <Header />
       <Wrapper>
         <Title>졸업반 01s</Title>
-        <img src="/Logo.png" alt="로고" />
+        <img src="/Logo.png" alt="로고" width={'100%'}/>
         <InformationArea />
         <TestButton
           onClick={() => {

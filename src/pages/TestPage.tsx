@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { uploadImage } from '../components/api/uploadImage';
-import { Footer } from '../components/common/Footer';
 import { Header } from '../components/common/Header';
 import { Container, Wrapper } from '../components/common/Wrapper';
-import { ImageIcon } from '../components/icons/ImageIcon';
-import { ImageUploadArea } from '../components/testPage/ImageUploadArea';
-
 export function Test() {
   const [imageFile, setImageFile] = useState<any>();
   const [imgUrl, setImageUrl] = useState<any>('');
