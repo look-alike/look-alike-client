@@ -15,6 +15,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     overflow-x: hidden;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
    
 
    &::-webkit-scrollbar {

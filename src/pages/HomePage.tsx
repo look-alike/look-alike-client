@@ -7,23 +7,21 @@ import { InformationArea } from '../components/homePage/InformationArea';
 export function Home() {
   const navigate = useNavigate();
   return (
-    <div style={{ position: 'relative' }}>
-      <Container>
-        <Header />
-        <Wrapper>
-          <Title>졸업반 01s</Title>
-          <img src="/Logo.png" alt="로고" />
-          <InformationArea />
-          <TestButton
-            onClick={() => {
-              navigate('/test');
-            }}
-          >
-            테스트 시작
-          </TestButton>
-        </Wrapper>
-      </Container>
-    </div>
+    <Container>
+      <Header />
+      <Wrapper>
+        <Title>졸업반 01s</Title>
+        <img src="/Logo.png" alt="로고" />
+        <InformationArea />
+        <TestButton
+          onClick={() => {
+            navigate('/test');
+          }}
+        >
+          테스트 시작
+        </TestButton>
+      </Wrapper>
+    </Container>
   );
 }
 
@@ -36,7 +34,7 @@ const Title = styled.span`
 `;
 
 const TestButton = styled.button`
-  width: 100%;
+  width: 90%;
   height: 55px;
   background-color: #e50914;
   border-radius: 16px;

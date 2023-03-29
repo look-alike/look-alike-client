@@ -49,7 +49,7 @@ export function Test() {
       <Header />
       <Wrapper>
         <Title>우리 테스트에 온 걸 환영해 연진아...</Title>
-        <div style={{ marginTop: '28px' }}>
+        <div style={{ marginTop: '52px' }}>
           {imgUrl.length > 1 ? (
             <CircleImage src={imgUrl} />
           ) : (
@@ -68,8 +68,8 @@ export function Test() {
                 accept="image/x-png,image/gif,image/jpeg"
               />
               <Circle htmlFor="img-upload" style={{ cursor: 'pointer' }}>
-                <ImageIcon />
-                <div>여기를 클릭해 연진아...</div>
+                {/* <ImageIcon /> */}
+                <div style={{ fontSize: '20px' }}>여기를 클릭해 연진아...</div>
               </Circle>
             </div>
           )}
@@ -91,15 +91,16 @@ const Title = styled.span`
 `;
 
 const ResultButton = styled.button<{ isImageUploaded: any }>`
-  width: 320px;
+  width: 90%;
   height: 55px;
-  background: ${(props) => (props.isImageUploaded ? 'rgba(0, 133, 255, 1)' : '#848484')};
+  background: ${(props) => (props.isImageUploaded ? '#e50914' : '#848484')};
   border-radius: 16px;
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 23px;
   color: white;
+  margin-top: 92px;
 `;
 
 const Circle = styled.label`
