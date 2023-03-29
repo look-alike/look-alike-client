@@ -42,7 +42,7 @@ export function Test() {
 
   return (
     <Container>
-      <Header />
+      {/* <Header /> */}
       <Wrapper>
         <Title>우리 테스트에 온 걸 환영해 연진아...</Title>
         <div style={{ marginTop: '52px' }}>
@@ -70,6 +70,7 @@ export function Test() {
             </div>
           )}
         </div>
+        {isImageUploaded && <Text>멋지다 연진아~ 브라보~</Text>}
         <ResultButton onClick={onClickResultButton} isImageUploaded={isImageUploaded}>
           결과 보기
         </ResultButton>
@@ -84,10 +85,27 @@ const Title = styled.span`
   line-height: 31px;
   color: white;
   margin-top: 12px;
+
+  @media (max-width: 767px) {
+    font-size: 24px;
+  }
+`;
+
+const Text = styled.div`
+  width: 100%;
+  height: 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  /* font-size: 24px; */
+  line-height: 34px;
+  font-size: 160%;
 `;
 
 const ResultButton = styled.button<{ isImageUploaded: any }>`
-  width: 90%;
+  width: 70%;
   height: 55px;
   background: ${(props) => (props.isImageUploaded ? '#e50914' : '#848484')};
   border-radius: 16px;
@@ -96,7 +114,11 @@ const ResultButton = styled.button<{ isImageUploaded: any }>`
   font-size: 18px;
   line-height: 23px;
   color: white;
-  margin-top: 92px;
+  margin-top: ${(props) => !props.isImageUploaded && '88px'};
+
+  @media (max-width: 767px) {
+    width: 80%;
+  }
 `;
 
 const Circle = styled.label`
@@ -113,6 +135,11 @@ const Circle = styled.label`
   font-weight: 500;
   font-size: 18px;
   line-height: 23px;
+
+  @media (max-width: 767px) {
+    width: 280px;
+    height: 280px;
+  }
 `;
 
 const CircleImage = styled.img`
