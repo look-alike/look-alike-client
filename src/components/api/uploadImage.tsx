@@ -1,27 +1,20 @@
+import { useSetRecoilState } from 'recoil';
+import { accuracyState } from '../../store';
 import { client } from './client';
 
-export async function uploadImage(file: any) {
-  // console.log(file);
+export async function uploadImage(imgUrl: any) {
+  const base64data = imgUrl.split(',')[1];
   const formData = new FormData();
-  formData.append('file', file);
+  formData.append('image', base64data);
 
-  return await client.post('/test', formData).then((res) => console.log(res));
-}
-
-/**
- async function postComment(props: CommentProps) {
-  const token = localStorage.getItem("token");
   return await client
-    .post(`/community/post/${props.postId}`, JSON.stringify(props), {
+    .post('/predict', formData, {
       headers: {
-        "Content-Type": `application/json`,
-        JWT: token,
+        'Content-Type': 'multipart/form-data',
       },
     })
-    .then((response) => {
-      if (response.status === 200) {
-        return response.data;
-      }
-    });
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.log(err));
 }
- */

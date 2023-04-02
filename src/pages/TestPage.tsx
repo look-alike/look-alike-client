@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { uploadImage } from '../components/api/uploadImage';
 import { Header } from '../components/common/Header';
 import { Container, Wrapper } from '../components/common/Wrapper';
+import { accuracyState, initialState } from '../store';
+
 export function Test() {
   const [imageFile, setImageFile] = useState<any>();
   const [imgUrl, setImageUrl] = useState<any>('');
   const [imageHeight, setImageHeight] = useState(0);
   const [isImageUploaded, setIsImageUploaded] = useState(false);
+  const [accuracy, setAccuracy] = useRecoilState(accuracyState);
+  const [initial, setInitial] = useRecoilState(initialState);
 
   useEffect(() => {
     if (imgUrl) {
@@ -34,15 +39,21 @@ export function Test() {
     fileReader.readAsDataURL(file as Blob);
   };
 
-  const onClickResultButton = () => {
-    console.log(imageFile);
+  const onClickResultButton = async () => {
+    const data = await uploadImage(imgUrl);
 
-    uploadImage(imageFile);
+    if (data) {
+      setAccuracy(data.accuracy);
+      setInitial(data.celebrity_initial);
+    }
   };
+
+  useEffect(() => {
+    console.log(accuracy, initial);
+  }, [accuracy, initial]);
 
   return (
     <Container>
-      {/* <Header /> */}
       <Wrapper>
         <Title>우리 테스트에 온 걸 환영해 연진아...</Title>
         <div style={{ marginTop: '52px' }}>
