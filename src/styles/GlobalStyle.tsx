@@ -2,7 +2,16 @@ import { createGlobalStyle } from 'styled-components';
 import './font.css';
 
 const GlobalStyle = createGlobalStyle`
-
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   html {
     height: 100%;
@@ -35,26 +44,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   }
-
-  /* body { */
-  /* background-image: url('your-background-image.jpg'); */
-  /* height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-  z-index: 1;
-} */
 
   
   #root {

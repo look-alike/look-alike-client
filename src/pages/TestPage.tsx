@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { uploadImage } from '../components/api/uploadImage';
@@ -13,18 +13,44 @@ export function Test() {
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [accuracy, setAccuracy] = useRecoilState(accuracyState);
   const [initial, setInitial] = useRecoilState(initialState);
+  const names: any = {
+    shg: '문동은과',
+    idh: '주여정과',
+    she: '과거 박연진과',
+    ijh: '박연진과',
+    cde: '과거 문동은과',
+    chj: '최혜정과',
+    har: '이사라와',
+    jjj: '전재준과',
+    jsi: '정성일과',
+    ojy: '하예솔과',
+    smo: '손명오와',
+  };
   const lines: any = {
-    shg: '넌 벌 받아야지. 신이 널 도우면 형벌 신이 날 도우면 천벌.', // 송혜교, 문동은
-    idh: '말해봐요. 뭐부터 해줄까요. 누구부터 죽여줄까요.', // 이도현, 주여정
+    shg: '넌 벌 받아야지. \n 신이 널 도우면 형벌 신이 날 도우면 천벌.', // 송혜교, 문동은
+    idh: '말해봐요. 뭐부터 해줄까요. \n 누구부터 죽여줄까요.', // 이도현, 주여정
     she: '왜 이렇게 늦게와… 보고싶어 죽는 줄.', // 신예은, 어린 연진
-    ijh: '분수에 맞게 입고 한도에 맞게 들자. 알아들었으면 끄덕여.', // 임지연, 박연진
-    cde: '오늘부터 내 꿈은 너야. 우리 꼭, 또 보자 박연진.', // 어린 동은, 정지소
-    chj: '내가 뭘 갖고 있을 줄 알고 이래. 건방 그만 떨어, 박연진', // 차주영, 최혜정
-    har: '근로소득세 내는 넌 모르는 이 종합소득세 내는 세계가 있단다, 혜정아.', // 김희어라, 이사라
-    jjj: '내가 제일 싫어하는 게 누군지 알아? 빨간머리앤이랑 빨간망토 차차야.', // 박성훈, 전재준
-    jsi: '내가 어떤 마음으로 참고 있는데!!! 내가 서있는 곳은 예솔이 옆이야.', // 하도영, 정성일
-    ojy: '주식이요. 삼전이나 카카오요:) 엄마가 누가 물어보면 그렇게 대답하래요.', // 오지율, 하예솔
-    smo: '떠나자  우리 둘만의 나라로. 나 너 좋아했다고 쭉!!', // 김건우, 손명오
+    ijh: '분수에 맞게 입고 한도에 맞게 들자.\n 알아들었으면 끄덕여.', // 임지연, 박연진
+    cde: '오늘부터 내 꿈은 너야. \n 우리 꼭, 또 보자 박연진.', // 어린 동은, 정지소
+    chj: '내가 뭘 갖고 있을 줄 알고 이래. \n 건방 그만 떨어, 박연진', // 차주영, 최혜정
+    har: '근로소득세 내는 넌 모르는 \n 이 종합소득세 내는 세계가 있단다, 혜정아.', // 김희어라, 이사라
+    jjj: '내가 제일 싫어하는 게 누군지 알아? \n 빨간머리앤이랑 빨간망토 차차야.', // 박성훈, 전재준
+    jsi: '내가 어떤 마음으로 참고 있는데!!! \n 내가 서있는 곳은 예솔이 옆이야.', // 하도영, 정성일
+    ojy: '주식이요. 삼전이나 카카오요:) \n 엄마가 누가 물어보면 그렇게 대답하래요.', // 오지율, 하예솔
+    smo: '떠나자  우리 둘만의 나라로. \n 나 너 좋아했다고 쭉!!', // 김건우, 손명오
+  };
+  const brands: any = {
+    shg: 'Dior',
+    idh: 'Fendi',
+    she: 'Valentino',
+    ijh: 'Versace',
+    cde: 'Skoolooks',
+    chj: 'Chanel',
+    har: 'Louis Vuitton',
+    jjj: 'Balmain',
+    jsi: 'Zegna',
+    ojy: 'Gucci',
+    smo: 'Brietling',
   };
 
   useEffect(() => {
@@ -61,10 +87,6 @@ export function Test() {
     }
   };
 
-  useEffect(() => {
-    console.log(accuracy, initial);
-  }, [accuracy, initial]);
-
   return (
     <Container>
       <Wrapper>
@@ -98,13 +120,50 @@ export function Test() {
         <ResultButton onClick={onClickResultButton} isImageUploaded={isImageUploaded}>
           결과 보기
         </ResultButton>
-        {initial && (
-          <TestResultWrapper>
-            <span>{lines[initial]}</span>
-            <img style={{ borderRadius: '8px' }} src={`/drama/${initial}.png`} width={320} alt="명품 & 배우 이미지" />
-            <span>네가 나랑 {accuracy.toFixed(3) * 100}%나 닮았다고? 이거나 입어</span>
-          </TestResultWrapper>
-        )}
+        <ResultContainer>
+          {initial && (
+            <TestResultWrapper>
+              <pre className="animation1">{lines[initial]}</pre>
+              <div
+                className="animation2"
+                style={{
+                  display: 'flex',
+                  width: '100%',
+                  // gap: '100px',
+                  // backgroundColor: 'red',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <img
+                  style={{ borderRadius: '8px' }}
+                  src={`/drama/${initial}.png`}
+                  width={320}
+                  alt="명품 & 배우 이미지"
+                />
+                <span style={{ marginTop: '32px' }}>
+                  등장인물 {names[initial]} {Math.round(accuracy * 1000) / 10}% 닮았습니다."
+                </span>
+              </div>
+
+              <div
+                className="animation3"
+                style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '40px' }}
+              >
+                <img
+                  style={{ width: '200px', height: '200px' }}
+                  src={`/luxury_icon/${initial}.png`}
+                  alt="명품 & 배우 이미지"
+                />
+              </div>
+              <span style={{ lineHeight: '40px' }}>
+                {names[initial].slice(0, names[initial].length - 1)}를 닮은 당신에게 가장 어울리는 브랜드는
+                <p>{brands[initial]}입니다.</p>
+              </span>
+            </TestResultWrapper>
+          )}
+        </ResultContainer>
       </Wrapper>
     </Container>
   );
@@ -191,12 +250,44 @@ const TestResultWrapper = styled.div`
   span {
     font-weight: 600;
     font-size: 30px;
-    line-height: 30px;
+    line-height: 120%;
     color: white;
     text-align: center;
 
     @media (max-width: 767px) {
       font-size: 24px;
+      line-height: 120%;
     }
+  }
+
+  pre {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 120%;
+    color: white;
+    text-align: center;
+    font-family: DX;
+
+    @media (max-width: 767px) {
+      font-size: 24px;
+      line-height: 120%;
+    }
+  }
+`;
+
+const ResultContainer = styled.div`
+  & > .animation1 {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards 1s;
+  }
+
+  & > .animation2 {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards 3s;
+  }
+
+  & > .animation3 {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards 5s;
   }
 `;
