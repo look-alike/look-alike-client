@@ -87,6 +87,23 @@ export function Test() {
     }
   };
 
+  const dragOverHandler = (event: any) => {
+    event.preventDefault();
+  };
+
+  const dropHandler = (event: any) => {
+    event.preventDefault();
+    if (event.dataTransfer.items) {
+      for (let i = 0; i < event.dataTransfer.items.length; i++) {
+        if (event.dataTransfer.items[i].kind === 'file') {
+          const file = event.dataTransfer.items[i].getAsFile();
+          setImageFile(file);
+          encodeFileToBase64([file]);
+        }
+      }
+    }
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -109,8 +126,16 @@ export function Test() {
                 }}
                 accept="image/x-png,image/gif,image/jpeg"
               />
-              <Circle htmlFor="img-upload" style={{ cursor: 'pointer' }}>
-                {/* <ImageIcon /> */}
+              <Circle
+                htmlFor="img-upload"
+                style={{ cursor: 'pointer' }}
+                onDragOver={(e) => {
+                  return dragOverHandler(e);
+                }}
+                onDrop={(e) => {
+                  return dropHandler(e);
+                }}
+              >
                 <div style={{ fontSize: '20px' }}>여기를 클릭해 연진아...</div>
               </Circle>
             </div>
