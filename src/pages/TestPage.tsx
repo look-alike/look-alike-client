@@ -5,6 +5,7 @@ import { uploadImage } from '../components/api/uploadImage';
 import { Header } from '../components/common/Header';
 import { Container, Wrapper } from '../components/common/Wrapper';
 import { accuracyState, initialState } from '../store';
+import { useNavigate } from 'react-router-dom';
 
 export function Test() {
   const [imageFile, setImageFile] = useState<any>();
@@ -13,6 +14,7 @@ export function Test() {
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [accuracy, setAccuracy] = useRecoilState(accuracyState);
   const [initial, setInitial] = useRecoilState(initialState);
+  const navigate = useNavigate();
   const names: any = {
     shg: '문동은과',
     idh: '주여정과',
@@ -183,9 +185,16 @@ export function Test() {
                 />
               </div>
               <span style={{ lineHeight: '40px' }}>
-                {names[initial].slice(0, names[initial].length - 1)}를 닮은 당신에게 가장 어울리는 브랜드는
+                배우 {names[initial].slice(0, names[initial].length - 1)}를 닮은 당신에게 가장 어울리는 브랜드는
                 <p>{brands[initial]}입니다.</p>
               </span>
+              <TestButton
+                onClick={() => {
+                  navigate('/test');
+                }}
+              >
+                홈으로 돌아가기
+              </TestButton>
             </TestResultWrapper>
           )}
         </ResultContainer>
@@ -219,7 +228,7 @@ const Text = styled.div`
   margin: 18px 0px;
 `;
 
-const ResultButton = styled.button<{ isImageUploaded: any }>`
+const ResultButton = styled.button<{ isImageUploaded?: any }>`
   width: 70%;
   height: 55px;
   background: ${(props) => (props.isImageUploaded ? '#e50914' : '#848484')};
@@ -314,5 +323,22 @@ const ResultContainer = styled.div`
   & > .animation3 {
     opacity: 0;
     animation: fadeInUp 0.5s ease-out forwards 5s;
+  }
+`;
+
+const TestButton = styled.button`
+  width: 70%;
+  height: 55px;
+  background-color: #e50914;
+  border-radius: 16px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  margin: 44px 0px 44px 0px;
+
+  @media (max-width: 767px) {
+    width: 90%;
+    overflow-x: hidden;
   }
 `;
