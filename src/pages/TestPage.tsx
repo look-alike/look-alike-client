@@ -68,13 +68,11 @@ export function Test() {
     fileReader.onload = () => {
       let img = new Image();
       img.onload = () => {
-        // console.log((img.height / img.width) * 200);
         setImageHeight((img.height / img.width) * 200);
       };
       if (typeof fileReader.result === 'string') {
         img.src = fileReader.result;
       }
-      // console.log(fileReader.result);
       setImageUrl(fileReader.result?.toString());
     };
     fileReader.readAsDataURL(file as Blob);
@@ -85,7 +83,7 @@ export function Test() {
 
     if (data) {
       setAccuracy(data.accuracy);
-      setInitial(data.celebrity_initial);
+      setInitial(data.celebrityInitial);
     }
   };
 
@@ -120,7 +118,6 @@ export function Test() {
                 id="img-upload"
                 style={{ display: 'none' }}
                 onChange={(e) => {
-                  console.log(e.target.files);
                   if (e.target.files) {
                     setImageFile(e.target.files[0]);
                     return encodeFileToBase64(e.target.files);
@@ -193,7 +190,7 @@ export function Test() {
                   navigate('/test');
                 }}
               >
-                홈으로 돌아가기
+                테스트 다시하기
               </TestButton>
             </TestResultWrapper>
           )}

@@ -1,5 +1,3 @@
-import { useSetRecoilState } from 'recoil';
-import { accuracyState } from '../../store';
 import { client } from './client';
 
 export async function uploadImage(imgUrl: any) {
@@ -10,13 +8,13 @@ export async function uploadImage(imgUrl: any) {
   return await client
     .post('/predict', formData, {
       headers: {
+        JWT: 'eyJ0eXAiOiJBQ0NFU1NfVE9LRU4iLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjg1MjM3MDc0LCJleHAiOjE2ODU4NDE4NzQsInJvbGUiOiJVU0VSIn0.EjoXlbyx_J8IcP7hvvBY17xrn4NMe8i4GnoA78R7tPI',
         'Content-Type': 'multipart/form-data',
       },
     })
     .then((res) => {
-      console.log(res.data);
-
-      return res.data;
+      console.log(res.data.data);
+      return res.data.data;
     })
     .catch((err) => console.log(err));
 }
